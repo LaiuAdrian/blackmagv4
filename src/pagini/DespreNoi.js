@@ -36,9 +36,7 @@ const DespreNoi =()=>{
        </div>
         <Footer />  
         
-        <Footer />  
-        
-        <Footer />  
+      
       </StickyContainer>
    
     

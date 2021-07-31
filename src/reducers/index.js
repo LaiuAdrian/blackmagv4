@@ -5,18 +5,18 @@ const ADAUGA_IN_COS = 'ADAUGA_IN_COS';
 
 
 
-export  const Adauga_in_cos =(id,pret,titlu,galerie,atribute,buc,PretTotal)=>{
+export  const Adauga_in_cos =(id,pret,titlu,categorie,galerie,stock,atribute_marime,atribute_culoare)=>{
 
     return{
         type :ADAUGA_IN_COS,
         id,
         pret,
         titlu,
+        categorie,
         galerie,
-        atribute,
-        buc,
-        PretTotal
-        
+        stock,
+        atribute_marime,
+        atribute_culoare
     }
 }
 
@@ -33,10 +33,11 @@ const Cos=(state=Cos_Initial, action)=>{
            id:action.id,
            pret:action.pret,
            titlu:action.titlu,
+           categorie:action.categorie,
            galerie:action.galerie,
-           atribute:action.atribute,
-           buc:action.buc,
-           PretTotal:action.PretTotal
+           stock:action.stock,
+           atribute_marime:action.atribute_marime,
+           atribute_culoare:action.atribute_culoare
           }
         ];
   
@@ -48,16 +49,18 @@ const Cos=(state=Cos_Initial, action)=>{
 
   const Api_Initial=[
  {
-   api:  ' https://blackmagback.herokuapp.com/black-mag/api/v1/product/get-all-blackmag-products'
+   api:  ' https://blackmagback.herokuapp.com/black-mag/api/v1/product/get-all-blackmag-products',
+   categorie:''
  }
   ]
   const FILTREAZA_PRODSE = 'FILTREAZA_PRODUSE';
 
-  export  const Filtreaza_produse =(api)=>{
+  export  const Filtreaza_produse =(api,categorie)=>{
 
     return{
         type :FILTREAZA_PRODSE,
-        api    
+        api,
+        categorie    
     }
 }
 
@@ -67,7 +70,8 @@ const Cos=(state=Cos_Initial, action)=>{
         return [
           ...state,
           {
-           api:action.api
+           api:action.api,
+           categorie:action.api
           }
         ];
   

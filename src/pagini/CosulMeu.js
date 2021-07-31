@@ -1,7 +1,7 @@
 
-// import { useState,useEffect } from 'react';
+import { useState } from 'react';
 import { Container,Col,Row} from 'react-bootstrap';
-import { useSelector } from 'react-redux'
+import { useSelector, } from 'react-redux'
 import Footer from '../componente/Footer';
 import Header from '../componente/Header';
 const CosulMeu =()=>{
@@ -25,11 +25,23 @@ const Cos = [...useSelector(state => state.Cos)];
 
   };
 
-  // console.log(removeDuplicates(Cos, item => item.id));
-
   const CosCurat=removeDuplicates(Cos, item => item.id)
+  
+
   removeDuplicates(Cos, item => item.id)
+
+
   console.log(CosCurat)
+
+ 
+
+  let preTotal = Cos.reduce((prev, cur)=> {
+    return prev + cur.pret;
+  }, 0);
+
+ 
+
+
 
     return(
        <>
@@ -48,16 +60,25 @@ const Cos = [...useSelector(state => state.Cos)];
                         <div key={data.id}>
                             <div className="arata_cos">
                               <img className ='img_produs' src={data.galerie} alt={'nik'} />
+
                               <div>
-                                <h3>{data.titlu}</h3>
-                                <p>Culoare: {data.atribute[0]}</p>
-                                <p>Marime: {data.atribute[1]}</p>
+                                <h3>{data.titlu}</h3>       
+                                <p className="">Culoare: {data.atribute_culoare} </p>
+                                <p className="">Marime: {data.atribute_marime}</p>
                               </div>
                               <div className="bucati_box">
-                                <p className="mt-5">{data.buc} Bucati</p>
+                                <p className="buc_cos">{data.buc} Bucati</p>
+                                
+                              
+                              
                               </div>
                               <div className="pret_box">
                                   <p>Pret<br />{data.pret} lei</p>
+                                  <button onClick={
+                                    console.log('sterge')
+                                  }>
+                                    Sterge
+                                  </button>
                               </div>
                             </div>            
                         </div>
@@ -66,7 +87,7 @@ const Cos = [...useSelector(state => state.Cos)];
                 </Col>
                 <Col className="my-3" md={4}  xs={12}  key={Cos.id}>
                   <h4>
-                PretTotal 
+                    PretTotal {preTotal} lei
                   </h4>
                 </Col>
            </Row>

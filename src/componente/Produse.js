@@ -5,8 +5,30 @@ import { Col } from 'react-bootstrap';
 import { useState,useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Adauga_in_cos } from '../reducers';
-import { Filtreaza_produse } from '../reducers';
 
+// const arr1 = [2, 6, 7, 1, 7, 8, 4, 3];
+// const arr2 = [5, ,7, 2, 2, 1, 3];
+// const arr3 = [1, 56, 345, 6, 54, 2, 68, 85, 3];
+// const arr4 = [3,2,5];
+// const arr5 = [1,2,5];
+// const intersection = (arr1, arr2) => {
+//    const res = [];
+//    for(let i = 0; i < arr1.length; i++){
+//       if(!arr2.includes(arr1[i])){
+//          continue;
+//       };
+//       res.push(arr1[i]);
+//    };
+//    return res;
+// };
+// const intersectMany = (...arrs) => {
+//    let res = arrs[0].slice();
+//    for(let i = 1; i < arrs.length; i++){
+//       res = intersection(res, arrs[i]);
+//    };
+//    return res;
+// };
+// console.log(intersectMany(arr1, arr2, arr3,arr4));
 // import {
 //   BrowserRouter as Router,
 //   Switch,
@@ -23,19 +45,20 @@ import { Filtreaza_produse } from '../reducers';
 // }
 
 const Produse=()=>{
-  
+
 
     const Filtrare = [...useSelector(state => state.Filtrare)];
     const url = Filtrare[Filtrare.length - 1].api;
     const [data, setData] = useState();
     useEffect(async () => {
-      await  axios.get(url).then(json => setData(json.data.data));
+     const json = await  axios.get(url)
+      setData(json.data.data);
     }, [url])
 
     
 console.log(Filtrare)
 console.log(url)
-  
+
   const Cos = [...useSelector(state => state.Cos)];
   console.log(Cos)
   const dispatch = useDispatch();
@@ -62,7 +85,16 @@ console.log(Cos)
                   ()=>{
                
                     
-                    dispatch(Adauga_in_cos(data._id,data.pret,data.titlu,data.galerie,data.atribute,buc))
+                    dispatch(Adauga_in_cos(
+                      data._id,
+                      data.pret,
+                      data.titlu,
+                      data.categorie,
+                      data.galerie,
+                      data.stock,
+                      data.atribute_marime,
+                      data.atribute_culoare
+                      ))
                    
                     }
                   }

@@ -7,7 +7,7 @@ import { FaShoppingCart } from 'react-icons/fa';
 import { useState } from "react";
 import Logo from'../img/black-mag-logo.png'
 import { FaBars ,FaUser ,FaRegTimesCircle } from "react-icons/fa";
-
+import Search from "../componente/Search";
 
 const Header =()=>{
   
@@ -42,11 +42,15 @@ const Header =()=>{
                          <p className='produse_cos_p'>{Cos.length}</p> 
                        </div>       
                     </div>
-                    </Nav.Link>
+                    </Nav.Link> 
+                    <Nav.Link className="Link-d d-flex">
+                          <Search />
+                   </Nav.Link>
                 </Nav>         
               </Col>
             </Row>
         </Container>
+        
     </Container>
 
     <Container fluid  className="meniu-mobile">       
@@ -80,6 +84,7 @@ const Header =()=>{
                 </div>   
           }
         </Container>
+ 
     </Container>
     
 </>

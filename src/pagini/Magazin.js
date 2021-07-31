@@ -20,10 +20,10 @@ const Magazin =()=>{
       <Container fluid>  
         <Container>
             <Row>       
-              <Col md={2}>
+              <Col md={3}>
                 <Filtreaza />
               </Col> 
-              <Col md={10}>
+              <Col md={9}>
                 <div>
                   <Row>
                      <Produse />
