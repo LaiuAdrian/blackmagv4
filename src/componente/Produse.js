@@ -75,7 +75,7 @@ console.log(Cos)
     
     return(
        <>
-         {data&&data.map(data => (
+         {data&&data?.map(data => (
             <Col className="my-3" md={3} sm={4} xs={6}  key={data._id}>
              <div>     
                 <img className ='img_produs' src={data.galerie} alt={'nik'} />

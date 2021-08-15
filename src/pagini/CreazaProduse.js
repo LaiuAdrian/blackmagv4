@@ -52,10 +52,10 @@ const CreazaProduse =()=>{
     }, [])
 
     console.log(Categorii)
-    for(let i=0; i<5;i++){
-       console.log(Categorii)
-    }
-   
+    
+   Categorii?.map(Cat_Nume=>{
+       console.log(Cat_Nume.category_title)
+   })
    
     return(
         <>
@@ -107,10 +107,13 @@ const CreazaProduse =()=>{
                                         required 
                                         className="select"
                                     >
-                                        <option value="Tricouri">Tricouri</option>
-                                        <option value="Hanorace">Hanorace</option>
-                                        <option value="Geci">Geci</option>
-                                        <option value="Pantofi">Pantofi</option>
+                                           { Categorii?.map(val => (
+                                        <option value={val.category_title}
+                                         key={val.category_title}>
+                                         {val.category_title}
+                                        </option>
+
+                                        ))}
                                     </select>
                              </label>
                         </div>
