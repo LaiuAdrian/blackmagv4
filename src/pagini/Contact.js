@@ -4,22 +4,7 @@ import Header from "../componente/Header"
 import { StickyContainer, Sticky } from 'react-sticky';
 
 
-const x=[0,1,2,3,4,5,15,]
 
-for(let i=0;i<x.length;i++){
-   if ((x[i] %5 ===0) && (x[i] %3 ===0)){
-    console.log('FuzzBizz')
-  }
-  else if(x[i] % 3 === 0){
-    console.log('Fizz')
-  }
-  else if(x[i] %5 ===0){
-    console.log('Bizz')
-  }
-  else
-  console.log(x[i])
-
-}
 
 
 

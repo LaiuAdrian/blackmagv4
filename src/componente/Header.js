@@ -13,7 +13,7 @@ const Header =()=>{
   
   const Cos = [...useSelector(state => state.Cos)];
   const[mobil_meniu,setmMbil_meniu]=useState(false)
-  console.log(Cos)
+  // console.log(Cos)
     return(
       <>
         <Container fluid  className="meniu-desktop py-3">   
@@ -46,6 +46,7 @@ const Header =()=>{
                     <Nav.Link className="Link-d d-flex">
                           <Search />
                    </Nav.Link>
+                   <Nav.Link className="Link-d"as={Link} to="/AdminPage">Admin</Nav.Link>
                 </Nav>         
               </Col>
             </Row>
@@ -81,7 +82,7 @@ const Header =()=>{
                   <Nav.Link className="Link-m"as={Link} to="/Magazin">Magazin</Nav.Link>
                   <Nav.Link className="Link-m"as={Link} to="/Contact">Contact</Nav.Link>
                   <Nav.Link className="Link-d"as={Link} to="/ContulMeu">Contul meu <FaUser className="Iconita ml-2" /></Nav.Link>
-                </div>   
+         </div>   
           }
         </Container>
  

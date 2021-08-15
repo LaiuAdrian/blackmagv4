@@ -50,20 +50,22 @@ const Produse=()=>{
     const Filtrare = [...useSelector(state => state.Filtrare)];
     const url = Filtrare[Filtrare.length - 1].api;
     const [data, setData] = useState();
-    useEffect(async () => {
-     const json = await  axios.get(url)
-      setData(json.data.data);
+    useEffect(() => {
+        async function getData() {
+        const json = await  axios.get(url)
+        setData(json.data.data);
+      }
+    getData();
     }, [url])
 
     
-console.log(Filtrare)
-console.log(url)
-
+  console.log(Filtrare)
+  console.log(url)
   const Cos = [...useSelector(state => state.Cos)];
   console.log(Cos)
   const dispatch = useDispatch();
   // const[PretTotal,setPretTotal]=useState(0)
-  let buc= 1;
+ 
 
  
 console.log(Cos)

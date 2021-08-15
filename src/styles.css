@@ -295,3 +295,19 @@ Produs pag */
     font-weight: bold;
     cursor: pointer;
 }
+.category_name{
+    text-align: center;
+    font-size: 35px;
+    color: #000000;
+}
+.img_creaza{
+    width: 100%;
+    height: auto;
+}
+
+input,select{
+    width: 150px;
+}
+select{
+    height: 50px;
+}

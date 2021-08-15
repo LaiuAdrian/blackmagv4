@@ -1,5 +1,4 @@
 
-import { useState } from 'react';
 import { Container,Col,Row} from 'react-bootstrap';
 import { useSelector, } from 'react-redux'
 import Footer from '../componente/Footer';
@@ -69,7 +68,6 @@ const Cos = [...useSelector(state => state.Cos)];
                               <div className="bucati_box">
                                 <p className="buc_cos">{data.buc} Bucati</p>
                                 
-                              
                               
                               </div>
                               <div className="pret_box">

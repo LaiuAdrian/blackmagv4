@@ -10,12 +10,12 @@ const Categorii =()=>{
 
 
 
-    const url = 'http://dragpannel.herokuapp.com/api/v2/products/get-available-category'
+    const url = 'https://blackmagback.herokuapp.com/black-mag/api/v1/category/get-all-cateogry-balck-mag'
 
     const [data, setData] = useState()
   
     useEffect(() => {
-      axios.get(url).then(json => setData(json.data.category))
+      axios.get(url).then(json => setData(json.data.categories))
     }, [])
 
 
@@ -30,11 +30,11 @@ console.log(data)
     return(
        <>
          {data&& data.map(data => (
-            <Col md={6}  xs={12}  key={data._id}>
+            <Col md={4}  xs={6}  key={data._id}>
              <div>     
         
-                <img className ='img_produs' src={data.productCategory} alt={'nik'} />
-                <h4 className="nume_produs">{data.productCategory}</h4>
+                <img className ='img_produs' src={data.category_image} alt={'nik'} />
+                <h3 className="category_name">{data.category_title}</h3>
               
          </div>
          </Col>

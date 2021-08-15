@@ -9,6 +9,9 @@ import CosulMeu from './pagini/CosulMeu';
 import ContulMeu from './pagini/ContulMeu';
 import DespreNoi from './pagini/DespreNoi';
 import CreazaProduse from './pagini/CreazaProduse';
+import CreazaCategorii from './pagini/CreazaCategorii';
+import AdminPage from './pagini/AdminPage';
+
 
 const  App=()=>{
   return (
@@ -21,6 +24,8 @@ const  App=()=>{
         <Route path="/ContulMeu" component={ContulMeu}/> 
         <Route path="/CosulMeu" component={CosulMeu}/>   
         <Route path="/CreazaProduse" component={CreazaProduse}/>    
+        <Route path="/CreazaCategorii" component={CreazaCategorii}/>    
+        <Route path="/AdminPage" component={AdminPage}/> 
     </Switch>
       
     </BrowserRouter>

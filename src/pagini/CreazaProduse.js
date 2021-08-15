@@ -1,9 +1,9 @@
 
-
+import Footer from '../componente/Footer';
 import { Container,Row,Col} from 'react-bootstrap';
-import React, { useState,useRef } from 'react';
+import React, { useState,useRef,useEffect } from 'react';
 import axios from "axios";
-
+import Header from "../componente/Header"
 
 const CreazaProduse =()=>{
 
@@ -14,13 +14,10 @@ const CreazaProduse =()=>{
     const [stock,setStock]= useState(0);
     const [atribute_marime,setAtribute_marime]= useState('');
     const [atribute_culoare,setAtribute_culoare]= useState('');
-    const [image, setImage] = useState('')
-    // const [atribute,setAtribute]=useState[culoare,marime]
-    
+    const [galerie, setGalerie] = useState('')
     const fileUpload = useRef()
-    console.log(image)
+    console.log(galerie)
     console.log(fileUpload)
-
     const formData = new FormData()
     formData.append('titlu', titlu )
     formData.append('descriere', descriere )
@@ -29,26 +26,41 @@ const CreazaProduse =()=>{
     formData.append('stock', stock )
     formData.append('atribute_culoare', atribute_culoare )
     formData.append('atribute_marime', atribute_marime )
-    formData.append('galerie', image )
+    formData.append('galerie', galerie )
 
-console.log(...formData)
+    console.log(...formData)
 
-const Creaza =(e)=>{
-   
+    const Creaza =(e)=>{
 
         e.preventDefault()
-    
-         axios.post('https://blackmagback.herokuapp.com/black-mag/api/v1/product/create-product', formData)
-        //  .then(response => setTitlu());
-
+            axios.post('https://blackmagback.herokuapp.com/black-mag/api/v1/product/create-product', formData)
+                setTitlu('')
+                setDescriere('')
+                setPret(0)
+                setCategorie('')
+                setStock(0);
+                setAtribute_marime('')
+                setAtribute_culoare('')
+   
 }
+    const url = 'https://blackmagback.herokuapp.com/black-mag/api/v1/category/get-all-cateogry-balck-mag'
 
-// console.log(produs)
-// https://blackmagback.herokuapp.com/black-mag/api/v1/product/create-product
+    const [Categorii, setCategorii] = useState()
 
+    useEffect(() => {
+    axios.get(url).then(json => setCategorii(json.data.categories))
+    }, [])
+
+    console.log(Categorii)
+    for(let i=0; i<5;i++){
+       console.log(Categorii)
+    }
+   
+   
     return(
         <>
-        <Container className="mt-5">
+        <Header />
+        <Container className="my-4">
                 <form  >
                   <Row>     
                     <Col sm={12} md={6}>
@@ -57,6 +69,7 @@ const Creaza =(e)=>{
                             <p className="text_cont">Titlu:</p>
                           
                             <input
+                            value={titlu}
                             type="text"
                             name="name" 
                             onChange={e => setTitlu(e.target.value)} 
@@ -67,6 +80,7 @@ const Creaza =(e)=>{
                             <p className="text_cont">Descriere:</p>
                             
                             <input
+                            value={descriere}
                             type="text"
                             name="name" 
                             onChange={e => setDescriere(e.target.value)} 
@@ -77,6 +91,7 @@ const Creaza =(e)=>{
                             <p className="text_cont">Pret:</p>
                             
                             <input
+                           value={pret}
                             type="number"
                             name="name" 
                             onChange={e => setPret(e.target.value )} 
@@ -85,13 +100,19 @@ const Creaza =(e)=>{
                         </div>
                         <div className="form_label">
                             <p className="text_cont">Categorie:</p>
-                            
-                            <input
-                            type="text"
-                            name="name" 
-                            onChange={e => setCategorie(e.target.value)} 
-                            required 
-                            />
+                            <label>
+                                    <select 
+                                        value={categorie}
+                                        onChange={e => setCategorie(e.target.value)} 
+                                        required 
+                                        className="select"
+                                    >
+                                        <option value="Tricouri">Tricouri</option>
+                                        <option value="Hanorace">Hanorace</option>
+                                        <option value="Geci">Geci</option>
+                                        <option value="Pantofi">Pantofi</option>
+                                    </select>
+                             </label>
                         </div>
                      
                         {/* <div className="form_label">
@@ -116,11 +137,11 @@ const Creaza =(e)=>{
                             <p className="text_cont">Imagine</p>
                             
                             <input 
-                            id='chat-image' 
-                            ref={fileUpload} 
-                            type='file' onChange={e => setImage(e.target.files[0])} 
-                            required 
-                            />
+                                id='chat-image' 
+                                ref={fileUpload} 
+                                type='file' onChange={e => setGalerie(e.target.files[0])} 
+                                required 
+                                />
 
                         </div>
             
@@ -134,6 +155,7 @@ const Creaza =(e)=>{
                     <div className="form_label">
                                 <p className="text_cont">Stock:</p>
                                 <input
+                                value={stock}
                                 type="number"
                                 name="name" 
                                 onChange={e => setStock( e.target.value)} 
@@ -142,23 +164,36 @@ const Creaza =(e)=>{
                             </div>
                             <div className="form_label">
                                 <p className="text_cont">Culoare:</p>
-                                
-                                <input
-                                type="text"
-                                name="name" 
-                                onChange={e => setAtribute_culoare(e.target.value)} 
-                                required 
-                                />
+                                <label>
+                                    <select 
+                                        value={atribute_culoare}
+                                        onChange={e => setAtribute_culoare(e.target.value)} 
+                                        required 
+                                        className="select"
+                                    >
+                                        <option value="rosu">rosu</option>
+                                        <option value="verde">verde</option>
+                                        <option value="negru">negru</option>
+                                        <option value="alb">alb</option>
+                                    </select>
+                                </label>
                             </div>
                             <div className="form_label">
                                 <p className="text_cont">Marime:</p>
-                                
-                                <input
-                                type="text"
-                                name="name" 
-                                onChange={e => setAtribute_marime( e.target.value)} 
-                                required 
-                                />
+                                 <label>
+                                    <select  
+                                        value={atribute_marime}
+                                        onChange={e => setAtribute_marime( e.target.value)}
+                                        required 
+                                        className="select"
+                                    
+                                    >
+                                        <option value="XS">XS</option>
+                                        <option value="S">S</option>
+                                        <option value="M">M</option>
+                                        <option value="L">L</option>
+                                    </select>
+                                </label>
                             </div>
                             <div className="buton_centru">
                                 <button 
@@ -181,8 +216,9 @@ const Creaza =(e)=>{
         
 
         </Container>
-
+<Footer />
 </>
+
              
     )
 }

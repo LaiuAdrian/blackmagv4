@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 
 
 const Api=()=>{
-  const url = 'http://dragpannel.herokuapp.com/api/v2/products/getAllProducts--shop'
+  const url = 'https://blackmagback.herokuapp.com/black-mag/api/v1/category/get-all-cateogry-balck-mag'
 
   const [data, setData] = useState([])
 

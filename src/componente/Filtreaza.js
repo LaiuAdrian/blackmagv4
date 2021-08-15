@@ -35,7 +35,7 @@ const categorie_hanorace="https://blackmagback.herokuapp.com/black-mag/api/v1/pr
                         <p >
                         Tricouri
                         </p>
-                        <img className ='img_produs' src={'https://magazinhaine.s3.eu-central-1.amazonaws.com/80cbbf316c5997ff567809367b8584c1'} alt={'nik'} />
+                        {/* <img className ='img_produs' src={'https://magazinhaine.s3.eu-central-1.amazonaws.com/80cbbf316c5997ff567809367b8584c1'} alt={'nik'} /> */}
                     </div>
                     <div className="filtreaza_categorie"
                     onClick={()=>{
@@ -44,7 +44,7 @@ const categorie_hanorace="https://blackmagback.herokuapp.com/black-mag/api/v1/pr
                         <p >
                         Hanorace
                         </p>
-                        <img className ='img_produs' src={'https://magazinhaine.s3.eu-central-1.amazonaws.com/b281937ce17ce990a632ade5d931ea6f'} alt={'nik'} />
+                        {/* <img className ='img_produs' src={'https://magazinhaine.s3.eu-central-1.amazonaws.com/b281937ce17ce990a632ade5d931ea6f'} alt={'nik'} /> */}
                     </div>
          
              </div>
