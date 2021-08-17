@@ -53,7 +53,7 @@ const CreazaProduse =()=>{
 
     console.log(Categorii)
     
-   Categorii?.map(Cat_Nume=>{
+   Categorii?.forEach(Cat_Nume=>{
        console.log(Cat_Nume.category_title)
    })
    
